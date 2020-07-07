@@ -5,23 +5,26 @@ Version:	1.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Sound
+#Source0Download: https://github.com/drowe67/freedv-gui/releases
 Source0:	https://github.com/drowe67/freedv-gui/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	88e16f3e158b8f48d05da7d68c8d8449
 URL:		http://freedv.org/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake >= 2.8
-BuildRequires:	codec2-devel >= 0.8.1
+BuildRequires:	codec2-devel >= 0.9.2
 BuildRequires:	hamlib-devel >= 1.2.15.3
-BuildRequires:	libsamplerate-devel >= 0.1.8
-BuildRequires:	libsndfile-devel >= 1.0.25
+BuildRequires:	libsamplerate-devel >= 0.1.9
+BuildRequires:	libsndfile-devel >= 1.0.28
 BuildRequires:	libstdc++-devel
-BuildRequires:	lpcnetfreedv-devel
+BuildRequires:	lpcnetfreedv-devel >= 0.1
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	speexdsp-devel >= 1.2-0.rc3
 BuildRequires:	wxGTK3-unicode-devel >= 3.0.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	codec2 >= 0.8.1
+Requires:	codec2 >= 0.9.2
 Requires:	hicolor-icon-theme
+Requires:	libsamplerate >= 0.1.9
+Requires:	libsndfile >= 1.0.28
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,8 +38,8 @@ decoded by FreeDV.
 
 FreeDV was built by an international team of Radio Amateurs working
 together on coding, design, user interface and testing. FreeDV is open
-source software, released under the GNU Public License version 2.
-The FDMDV modem and Codec 2 Speech codec used in FreeDV are also open
+source software, released under the GNU Public License version 2. The
+FDMDV modem and Codec 2 Speech codec used in FreeDV are also open
 source.
 
 %description -l pl.UTF-8
