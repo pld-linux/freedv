@@ -1,23 +1,24 @@
-Summary:        FreeDV Digital Voice
+Summary:	FreeDV Digital Voice
 Summary(pl.UTF-8):	FreeDV Digital Voice - cyfrowy głos
-Name:           freedv
-Version:        1.3.1
-Release:        1
-License:        GPL v2+
+Name:		freedv
+Version:	1.4
+Release:	1
+License:	GPL v2+
 Group:		X11/Applications/Sound
-Source0:        https://hobbes1069.fedorapeople.org/freetel/%{name}/%{name}-%{version}.tar.xz
-# Source0-md5:	43a4bca546def09662998509fe5c7abe
-URL:            http://freedv.org/
-BuildRequires:  alsa-lib-devel
-BuildRequires:  cmake >= 2.8
-BuildRequires:  codec2-devel >= 0.8.1
-BuildRequires:  hamlib-devel >= 1.2.15.3
-BuildRequires:  libsamplerate-devel >= 0.1.8
-BuildRequires:  libsndfile-devel >= 1.0.25
-BuildRequires:  libstdc++-devel
-BuildRequires:  portaudio-devel >= 19
-BuildRequires:  speexdsp-devel >= 1.2-0.rc3
-BuildRequires:  wxGTK3-unicode-devel >= 3.0.0
+Source0:	https://github.com/drowe67/freedv-gui/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	88e16f3e158b8f48d05da7d68c8d8449
+URL:		http://freedv.org/
+BuildRequires:	alsa-lib-devel
+BuildRequires:	cmake >= 2.8
+BuildRequires:	codec2-devel >= 0.8.1
+BuildRequires:	hamlib-devel >= 1.2.15.3
+BuildRequires:	libsamplerate-devel >= 0.1.8
+BuildRequires:	libsndfile-devel >= 1.0.25
+BuildRequires:	libstdc++-devel
+BuildRequires:	lpcnetfreedv-devel
+BuildRequires:	portaudio-devel >= 19
+BuildRequires:	speexdsp-devel >= 1.2-0.rc3
+BuildRequires:	wxGTK3-unicode-devel >= 3.0.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	codec2 >= 0.8.1
 Requires:	hicolor-icon-theme
@@ -55,7 +56,7 @@ wydane na licencji GNU Public License w wersji 2. Modem FDMDV oraz
 kodek mowy Codec 2, używane we FreeDV, także mają otwarte źródła.
 
 %prep
-%setup -q
+%setup -q -n freedv-gui-%{version}
 
 %build
 install -d build
@@ -83,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING README.txt RELEASE_NOTES.txt USER_MANUAL.txt
+%doc COPYING README.md USER_MANUAL.md
 %attr(755,root,root) %{_bindir}/freedv
 %{_desktopdir}/freedv.desktop
 %{_iconsdir}/hicolor/*x*/apps/freedv.png
