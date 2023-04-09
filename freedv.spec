@@ -1,27 +1,29 @@
 Summary:	FreeDV Digital Voice
 Summary(pl.UTF-8):	FreeDV Digital Voice - cyfrowy głos
 Name:		freedv
-Version:	1.4
+Version:	1.8.8.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Sound
 #Source0Download: https://github.com/drowe67/freedv-gui/releases
 Source0:	https://github.com/drowe67/freedv-gui/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	88e16f3e158b8f48d05da7d68c8d8449
+# Source0-md5:	479cd8141a1f8e795a9f898e7fca2676
 URL:		http://freedv.org/
-BuildRequires:	alsa-lib-devel
-BuildRequires:	cmake >= 2.8
-BuildRequires:	codec2-devel >= 0.9.2
-BuildRequires:	hamlib-devel >= 1.2.15.3
+BuildRequires:	alsa-lib-devel >= 1.1.8
+BuildRequires:	cmake >= 3.13
+BuildRequires:	codec2-devel >= 1.0.5
+BuildRequires:	hamlib-devel >= 3.3
 BuildRequires:	libsamplerate-devel >= 0.1.9
 BuildRequires:	libsndfile-devel >= 1.0.28
 BuildRequires:	libstdc++-devel
-BuildRequires:	lpcnetfreedv-devel >= 0.1
+BuildRequires:	lpcnetfreedv-devel >= 0.3
 BuildRequires:	portaudio-devel >= 19
 BuildRequires:	speexdsp-devel >= 1.2-0.rc3
 BuildRequires:	wxGTK3-unicode-devel >= 3.0.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	codec2 >= 0.9.2
+Requires:	alsa-lib >= 1.1.8
+Requires:	codec2 >= 1.0.5
+Requires:	hamlib >= 3.3
 Requires:	hicolor-icon-theme
 Requires:	libsamplerate >= 0.1.9
 Requires:	libsndfile >= 1.0.28
@@ -62,13 +64,10 @@ kodek mowy Codec 2, używane we FreeDV, także mają otwarte źródła.
 %setup -q -n freedv-gui-%{version}
 
 %build
-install -d build
-cd build
-%cmake .. \
-	-DWXCONFIG=%{_bindir}/wx-gtk3-unicode-config \
-	-DUSE_STATIC_CODEC2=OFF
+%cmake -B build \
+	-DWXCONFIG=%{_bindir}/wx-gtk3-unicode-config
 
-%{__make}
+%{__make} -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -87,7 +86,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING README.md USER_MANUAL.md
+%doc README.md USER_MANUAL.md
 %attr(755,root,root) %{_bindir}/freedv
+%{_datadir}/freedv-gui
 %{_desktopdir}/freedv.desktop
 %{_iconsdir}/hicolor/*x*/apps/freedv.png
