@@ -2,7 +2,7 @@ Summary:	FreeDV Digital Voice
 Summary(pl.UTF-8):	FreeDV Digital Voice - cyfrowy głos
 Name:		freedv
 Version:	1.8.8.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Sound
 #Source0Download: https://github.com/drowe67/freedv-gui/releases
